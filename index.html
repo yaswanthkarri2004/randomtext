@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Random Text Generator</title>
+    <style>
+      #textDisplay {
+        font-size: 18px;
+        font-family: Arial, sans-serif;
+        padding: 20px;
+        border: 1px solid green;
+        margin: auto;
+        margin-left: 20%;
+        margin-right: 20%;
+        min-height: 100px;
+      }
+
+      button {
+        padding: 10px 20px;
+        background-color: #3498db;
+        color: white;
+        border: none;
+        cursor: pointer;
+        display: block;
+        margin: 20px auto;
+      }
+
+      button:hover {
+        background-color: #2980b9;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="textDisplay"></div>
+    <button onclick="generateRandomWord()">Generate Word</button>
+    <button onclick="generateRandomParagraph()">Generate Paragraph</button>
+    <button onclick="generateRandomList()">Generate Points</button>
+
+    <script>
+      var textDisplay = document.getElementById("textDisplay");
+      var buttonWord = document.querySelector("button:nth-of-type(1)");
+      var buttonParagraph = document.querySelector("button:nth-of-type(2)");
+      var buttonList = document.querySelector("button:nth-of-type(3)");
+
+      var words = [
+        "Lorem",
+        "ipsum",
+        "dolor",
+        "sit",
+        "amet",
+        "consectetur",
+        "adipiscing",
+        "elit",
+        "sed",
+        "eiusmod",
+        "tempor",
+        "incididunt",
+        "ut",
+        "labore",
+        "et",
+        "dolore",
+        "magna",
+        "aliqua",
+        "abundance",
+        "acumen",
+        "benevolent",
+        "candor",
+        "clarity",
+        "compassion",
+        "conscientious",
+        "diligence",
+        "effervescent",
+        "empathy",
+        "fortitude",
+        "gratitude",
+        "harmony",
+        "impartial",
+        "innovation",
+        "integrity",
+        "jubilant",
+        "kindness",
+        "luminous",
+        "magnanimous",
+        "nurture",
+        "optimism",
+        "patience",
+        "quintessential",
+        "resilient",
+        "serendipity",
+        "sincerity",
+        "tenacity",
+        "tranquil",
+        "unwavering",
+        "veracity",
+        "wholesome",
+        "zeal",
+      ];
+
+      function getRandomElement(array) {
+        var randomIndex = Math.floor(Math.random() * array.length);
+        return array[randomIndex];
+      }
+
+      function generateRandomWord() {
+        var randomWord = getRandomElement(words);
+        textDisplay.textContent = randomWord;
+      }
+
+      function generateRandomParagraph() {
+        var paragraph = "";
+        var sentenceCount = Math.floor(Math.random() * 5) + 3; // Random number of sentences (between 3 and 7)
+        for (var i = 0; i < sentenceCount; i++) {
+          var sentence =
+            getRandomElement(words) + " " + getRandomElement(words) + ". ";
+          paragraph += sentence;
+        }
+        textDisplay.textContent = paragraph;
+      }
+
+      function generateRandomList() {
+        var list = "";
+        var pointCount = Math.floor(Math.random() * 5) + 3; // Random number of points (between 3 and 7)
+        for (var i = 0; i < pointCount; i++) {
+          var point =
+            "- " +
+            getRandomElement(words) +
+            " " +
+            getRandomElement(words) +
+            "<br>";
+          list += point;
+        }
+        textDisplay.innerHTML = list;
+      }
+
+      buttonWord.addEventListener("click", generateRandomWord);
+      buttonParagraph.addEventListener("click", generateRandomParagraph);
+      buttonList.addEventListener("click", generateRandomList);
+    </script>
+  </body>
+</html>
